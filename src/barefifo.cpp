@@ -4,11 +4,24 @@
 
 
 
-BareFifo::BareFifo(uint8_t *pu8_FifoBuffer, const uint32_t u32_FifoBufferSize)
+BareFifo::BareFifo(uint8_t pu8_FifoBuffer[], const uint32_t u32_FifoBufferSize)
   : mpu8_Buffer{pu8_FifoBuffer}
   , mu32_BufferSize{u32_FifoBufferSize}
   , mu32_StartPtr{0}
   , mu32_Used{0}
+{
+}
+
+
+
+void BareFifo::begin(void)
+{
+  reset();
+}
+
+
+
+void BareFifo::end(void)
 {
 }
 
@@ -70,11 +83,11 @@ uint32_t BareFifo::availableForWrite(void)
 
 
 
-uint32_t BareFifo::write(const uint8_t *pu8_Buffer, const uint32_t u32_BufferSize)
+uint32_t BareFifo::write(const uint8_t pu8_Buffer[], const uint32_t u32_Size)
 {
-  uint32_t u32_BytesToWrite = u32_BufferSize;
+  uint32_t u32_BytesToWrite = u32_Size;
 
-  if(u32_BufferSize>mu32_BufferSize-mu32_Used)
+  if(u32_Size>mu32_BufferSize-mu32_Used)
   {
     u32_BytesToWrite = mu32_BufferSize-mu32_Used;
     mb_Overflow = true;
@@ -102,7 +115,7 @@ uint32_t BareFifo::write(const uint8_t *pu8_Buffer, const uint32_t u32_BufferSiz
 
 
 
-uint32_t BareFifo::read(uint8_t *pu8_Buffer, const uint32_t u32_BufferSize)
+uint32_t BareFifo::read(uint8_t pu8_Buffer[], const uint32_t u32_BufferSize)
 {
   uint32_t u32_BytesToRead = u32_BufferSize;  
 

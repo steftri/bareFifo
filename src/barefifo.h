@@ -14,7 +14,10 @@ class BareFifo
   bool mb_Overflow; 
 
 public:
-  BareFifo(uint8_t *pu8_FifoBuffer, const uint32_t u32_FifoBufferSize);
+  BareFifo(uint8_t pu8_FifoBuffer[], const uint32_t u32_FifoBufferSize);
+
+  void begin(void);
+  void end(void);
 
   bool isEmpty(void);
   bool isAlmostEmpty(void);
@@ -26,8 +29,8 @@ public:
   uint32_t available(void);
   uint32_t availableForWrite(void);
 
-  uint32_t write(const uint8_t *pu8_Buffer, const uint32_t u32_BufferSize);
-  uint32_t read(uint8_t *pu8_Buffer, const uint32_t u32_BufferSize);
+  uint32_t write(const uint8_t pu8_Buffer[], const uint32_t u32_Size);
+  uint32_t read(uint8_t pu8_Buffer[], const uint32_t u32_BufferSize);
 };
 
 
