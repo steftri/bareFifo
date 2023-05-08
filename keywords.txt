@@ -1,0 +1,24 @@
+# Syntax Coloring Map For Shell
+# https://arduino.github.io/arduino-cli/library-specification/#keywords
+# Formatted by a single true tab (not spaces)
+
+# Datatypes (KEYWORD1)
+BareFifo	KEYWORD1
+
+# Methods and Functions (KEYWORD2)
+isEmpty	KEYWORD2
+isAlmostEmpty	KEYWORD2
+isAlmostFull	KEYWORD2
+isFull	KEYWORD2
+isOverflow	KEYWORD2
+reset	KEYWORD2
+available	KEYWORD2
+availableForWrite	KEYWORD2
+write	KEYWORD2
+read	KEYWORD2
+
+# Instances (KEYWORD2)
+
+# Constants (LITERAL1)
+RcOK	LITERAL1
+RcError	LITERAL1
