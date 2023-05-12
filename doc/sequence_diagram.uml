@@ -1,0 +1,51 @@
+@startuml
+
+participant main
+participant DataProducer
+participant DataConsumer
+
+box "library" #LightBlue
+  participant BareFifo
+end box
+
+
+group construction
+
+  main -> main : create buffer
+  main -> BareFifo ++ : <<constructor>> BareFifo(&buffer)
+  deactivate BareFifo
+
+end group
+
+
+group setup()
+ 
+  main -> BareFifo ++ : begin()
+  deactivate BareFifo
+
+end group
+
+
+group loop() - simple case
+  
+  [-> DataProducer ++ : some data
+  DataProducer -> BareFifo ++ : write()
+  BareFifo -> BareFifo ++ : copy data
+  deactivate BareFifo
+  return written bytes
+  deactivate DataProducer
+
+  [-> DataConsumer ++ : data request
+  DataConsumer -> BareFifo ++ : available() 
+  return size
+  DataConsumer -> BareFifo ++ : read()
+  BareFifo -> BareFifo ++ : copy data
+  deactivate BareFifo
+  return data
+  deactivate DataConsumer
+
+end group
+
+
+
+@enduml

@@ -1,4 +1,4 @@
-# Shell
+# BareFifo
 
 Generic FIFO class without dynamic memory usage 
 
@@ -29,7 +29,7 @@ Here the integration of a FiFo is shown with a simple Arduino Sketch:
   #include <barefifo.h>
   ```
 
-* create the class; use a static array as the fifo buffer and hand it over to the fifo class at construction:
+* create an instance of the class; use a static array as the fifo buffer and hand it over to the fifo class at construction:
 
   ```C++
   uint8_t FifoBuffer[512];
@@ -148,6 +148,29 @@ Here the integration of a FiFo is shown with a simple Arduino Sketch:
   Returns the number of read bytes.
 
   :warning: when writing into the FIFO within an interrupt service routine, use `noInterrupt()` before and `interrupt()` after reading from the FIFO. 
+
+
+## Diagrams
+
+### Class Diagram
+
+This diagram illustrates only the BareFifo class. There are no other classes or important structures within this library.
+
+![Class Diagram](doc/img/class_diagram.png)
+
+### Sequence Diagram (simple usage)
+
+This sequence diagram illustrates the initialization and the very basic usage. It does not illustrate any error mechanism (FIFO overflow, for example). 
+
+![Sequence Diagram](doc/img/sequence_diagram.png)
+
+### Sequence Diagram (reading from serial port)
+
+Usually the scenario is more complex. There are several cases, which cannot all be illustrated. 
+
+As an example, the following sequence diagram illustrates the usage for the serial port. Often the serial interface has a hardware buffer of a few byts only, and therefore it is necessary to fetch the incoming data triggered by an interrupt. It often also provides two hardware lines for flow control: RTS (request to send) and CTS (clear to send). The diagram also illustrates how to use RTS in case of an (almost) full FIFO.
+
+![Sequence Diagram Serial](doc/img/sequence_diagram_serial.png)
 
 
 ## Limitations
