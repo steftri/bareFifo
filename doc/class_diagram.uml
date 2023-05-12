@@ -1,0 +1,30 @@
+@startuml
+
+
+class BareFifo 
+{
+  - Buffer : uint8 *
+  - BufferSize : uint32
+  - StartPtr : uint32
+  - Used : uint32
+  - Overflow : bool 
+  ----
+  + BareFifo(FifoBuffer[], FifoBufferSize)
+  + begin()
+  + end()
+  + reset()  
+  ....
+  + uint32 available()
+  + uint32 availableForWrite()
+  + uint32 write(Buffer[], Size)
+  + uint32 read(Buffer[], BufferSize)
+  ....
+  + bool isEmpty()
+  + bool isAlmostEmpty()
+  + bool isAlmostFull()
+  + bool isFull()
+  + bool isOverflow()
+}
+
+
+@enduml
