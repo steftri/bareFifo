@@ -185,6 +185,10 @@ As an example, the following sequence diagram illustrates the usage for the seri
 
 ## Changelog
 
+### 1.0.1
+
+* documentation: class diagram and sequence diagrams added
+
 ### 1.0.0
 
 * Initial release
