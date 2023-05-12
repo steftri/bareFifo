@@ -156,13 +156,13 @@ Here the integration of a FiFo is shown with a simple Arduino Sketch:
 
 This diagram illustrates only the BareFifo class. There are no other classes or important structures within this library.
 
-![Class Diagram](doc/img/class_diagram.png)
+![Class Diagram](doc/class_diagram.png)
 
 ### Sequence Diagram (simple usage)
 
 This sequence diagram illustrates the initialization and the very basic usage. It does not illustrate any error mechanism (FIFO overflow, for example). 
 
-![Sequence Diagram](doc/img/sequence_diagram.png)
+![Sequence Diagram](doc/sequence_diagram.png)
 
 ### Sequence Diagram (reading from serial port)
 
@@ -170,7 +170,7 @@ Usually the scenario is more complex. There are several cases, which cannot all 
 
 As an example, the following sequence diagram illustrates the usage for the serial port. Often the serial interface has a hardware buffer of a few byts only, and therefore it is necessary to fetch the incoming data triggered by an interrupt. It often also provides two hardware lines for flow control: RTS (request to send) and CTS (clear to send). The diagram also illustrates how to use RTS in case of an (almost) full FIFO.
 
-![Sequence Diagram Serial](doc/img/sequence_diagram_serial.png)
+![Sequence Diagram Serial](doc/sequence_diagram_serial.png)
 
 
 ## Limitations
