@@ -1,4 +1,4 @@
-#include <memory.h>
+#include <string.h>   // needed for memcpy
 
 #include "barefifo.h" 
 
